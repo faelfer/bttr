@@ -244,7 +244,11 @@ export default function TimeTable({ history }) {
                     />
                   </div>
                   <div className="time__content">
-                    <Abstract abiliity={abiliity} currentDate={currentDate} timeTotal={timeTotal}/>
+                    <Abstract 
+                      abiliity={abiliity} 
+                      currentDate={currentDate} 
+                      timeTotal={timeTotal}
+                    />
                   </div>
                 </>
               :

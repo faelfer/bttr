@@ -89,6 +89,9 @@ export default function Time({ abiliity, currentDate, timeTotal }) {
 
     return (
       <div className="abstract" >
+        <p className="abstract__name">
+          {abiliity.name}
+        </p>
         <div className="abstract__progress">
           <div style={{ 
               width: (parseInt(percentage) > 100 ? '100%' : percentage), 

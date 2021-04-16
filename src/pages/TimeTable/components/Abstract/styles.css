@@ -4,7 +4,7 @@
   justify-content: space-around;
   align-items: center;
   width: 75%;
-  height: 95px;
+  height: 120px;
   background-color: transparent;
 }
 
@@ -12,4 +12,12 @@
   width: 100%;
   border-radius: 5px;
   background-color: var(--on-primary-color);
+}
+
+.abstract__name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: var(--on-primary-color);
 }
