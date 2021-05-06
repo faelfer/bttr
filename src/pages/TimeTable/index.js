@@ -16,7 +16,7 @@ export default function TimeTable({ history }) {
     const [timeInfo, setTimeInfo] = useState({});
     const [page, setPage] = useState(1);
     const [abiliity, setAbiliity] = useState({});
-    const [timeTotal, setTimeTotal] = useState(100);
+    const [timeTotal, setTimeTotal] = useState(0);
     const [isLoad, setIsLoad] = useState(false);
     const [dateFilter, setDateFilter] = useState("any date");
     const [currentDate, setCurrentDate] = useState(new Date())
@@ -35,6 +35,7 @@ export default function TimeTable({ history }) {
               setError("Houve um problema ao listar seus registros de tempo, tente novamente mais tarde");
           }
 
+          setError("")
           setTimes(docs)
           setTimeInfo(timeInfo);
           setPage(pageNumber);
@@ -94,6 +95,7 @@ export default function TimeTable({ history }) {
 
             console.log("getTimesFilterByDate | (response.data).length: ", (response.data).length);
             if ((response.data).length !== 0) {
+              setError("");
               setTimes(response.data)
               setAbiliity(response.data[0].abiliity)
               console.log("getTimesFilterByDate | if (response.data[0] > 1) ");
@@ -116,8 +118,8 @@ export default function TimeTable({ history }) {
               setTimeTotal(typeof minutesTotal ===	"object" ? minutesTotal.minutes : minutesTotal)
             } else {
               console.log("getTimesFilterByDate | else");
-              setTimeTotal(0)
-              setTimes([])
+              setError("Não existem registros de tempo suficientes para calcular a métrica mensal");
+
             }
         } catch (error) {
           console.log("getTimesFilterByDate | error: ", error);
@@ -222,7 +224,7 @@ export default function TimeTable({ history }) {
                       }}
                     >
                       <option value="month">Métrica mensal</option>
-                      <option value="any date">Listar todos os registros</option>
+                      <option value="any date">Lista de registros</option>
                     </select>
                   </div>
                 )
@@ -244,11 +246,16 @@ export default function TimeTable({ history }) {
                     />
                   </div>
                   <div className="time__content">
+                  {error && <p className="form__message--error">{error}</p>}
+                  {error ?
+                    null
+                  :
                     <Abstract 
                       abiliity={abiliity} 
                       currentDate={currentDate} 
                       timeTotal={timeTotal}
                     />
+                  }
                   </div>
                 </>
               :
