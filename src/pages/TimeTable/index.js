@@ -221,7 +221,7 @@ export default function TimeTable({ history }) {
                         setDateFilter(event.target.value) 
                       }}
                     >
-                      <option value="month">Métricas do mês atual</option>
+                      <option value="month">Métrica mensal</option>
                       <option value="any date">Listar todos os registros</option>
                     </select>
                   </div>

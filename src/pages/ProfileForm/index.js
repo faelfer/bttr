@@ -116,7 +116,7 @@ export default function ProfileForm({ history }) {
     return (
       <>
         <NavBar navigation={history}/>
-        <div className="content--align">
+        <div className="content--align content--column">
           <div className="abiliity__content">
             <Load isShow={isLoad}/>
             <form className="abiliity__form" onSubmit={editProfile}>
@@ -156,12 +156,12 @@ export default function ProfileForm({ history }) {
               <p className="redirect__text redirect__text--margin">
                 <Link className="redirect__link" to="/redefine-password">Redefinir a senha</Link>
               </p>
-
-              <hr className="abiliity__hr"/>
-              <button className="profile__logout" onClick={exit}>
-                Sair
-              </button>
             </form>
+          </div>
+          <div className="time__content">
+            <button className="profile__logout" onClick={exit}>
+              Sair
+            </button>
           </div>
         </div>
     </>
